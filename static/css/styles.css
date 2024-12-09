@@ -1,0 +1,765 @@
+/* Общие стили для всего сайта */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #003366, #0099cc); /* Градиент с глубокими синими и светлыми оттенками */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333; /* Тёмно-серый цвет для текста */
+}
+
+/* Контейнер для формы входа */
+.login-container {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Тень для контейнера */
+    text-align: center;
+    position: relative;
+}
+
+/* Стиль для логотипа на странице авторизации */
+.auth-page .logo-container img {
+    margin-top: -20px; /* Поднимите логотип */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px; /* Уменьшите ширину логотипа */
+    height: auto; /* Сохраняет пропорции */
+}
+
+
+/* Заголовок страницы */
+h2 {
+    margin-bottom: 30px;
+    color: #003366;
+    font-size: 26px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    line-height: 1.3;
+}
+
+/* Поля ввода */
+.input-field {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Эффект для полей ввода */
+.input-field:focus {
+    border-color: #006bb3;
+    outline: none;
+    background-color: #ffffff;
+}
+
+/* Кнопка входа */
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #003366;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Эффект при наведении на кнопку */
+.login-button:hover {
+    background-color: #0099cc;
+    transform: translateY(-3px);
+}
+
+/* Подсказка для регистрации */
+.signup-prompt {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signup-prompt a {
+    color: #003366;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-prompt a:hover {
+    text-decoration: underline;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+    .login-container {
+        width: 85%;
+        padding: 30px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Стили для панели администратора */
+.admin-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
+}
+
+/* Панель навигации */
+.admin-nav {
+    background-color: #003366;
+    color: white;
+    width: 250px;
+    padding: 20px;
+    border-radius: 8px;
+    margin-right: 30px;
+}
+
+.admin-nav .logo {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.admin-nav h1 {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.admin-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.admin-nav ul li {
+    margin: 15px 0;
+}
+
+.admin-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.admin-nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Основной контент */
+.admin-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #003366;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.actions {
+    margin-bottom: 20px;
+}
+
+.add-btn {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #0099cc;
+}
+
+/* Таблицы */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.data-table th, .data-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.data-table th {
+    background-color: #003366;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table button {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.data-table button:hover {
+    background-color: #0099cc;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .admin-nav {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .admin-content {
+        width: 100%;
+    }
+}
+
+/* Стили для блока с аватаркой и информацией о пользователе */
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    margin-right: 15px;
+}
+
+.avatar-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-details p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.role {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Новый стиль для улучшенного меню */
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-item {
+    display: block;
+    padding: 15px 20px;
+    margin: 10px 0;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background-color: #34495e;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.menu-item:hover {
+    background-color: #1abc9c;
+    transform: translateX(10px);
+}
+
+.menu-item.logout {
+    background-color: #e74c3c;
+}
+
+.menu-item.logout:hover {
+    background-color: #c0392b;
+}
+
+
+/* Стили для меню панели администратора */
+.admin-nav {
+    background-color: #003366;
+    color: white;
+    width: 250px;
+    padding: 20px;
+    border-radius: 12px;
+    margin-right: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-nav .logo {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+/* Стили для списка меню */
+.admin-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Стили для каждого элемента меню */
+.admin-nav ul li {
+    margin: 20px 0;
+}
+
+/* Стили для ссылок в меню */
+.admin-nav ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background-color: #005a8c;  /* Темно-синий фон */
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+/* Эффект при наведении на пункты меню */
+.admin-nav ul li a:hover {
+    background-color: #006bb3;  /* Легкий синий оттенок */
+    transform: translateX(5px);  /* Легкий сдвиг вправо */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);  /* Тень при наведении */
+}
+
+/* Стили для последнего пункта "Выход" */
+.admin-nav ul li a.logout {
+    background-color: #e74c3c;  /* Красный фон для выхода */
+}
+
+.admin-nav ul li a.logout:hover {
+    background-color: #c0392b;  /* Темный красный при наведении */
+    transform: translateX(5px);  /* Легкий сдвиг вправо */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для адаптивности на мобильных устройствах */
+@media (max-width: 768px) {
+    .admin-nav {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .admin-nav ul li a {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
+
+.version-info {
+    margin-top: 380px; /* Расстояние от кнопки выхода */
+    font-size: 14px;
+    color: white; /* Белый цвет текста */
+    text-align: center;
+    font-weight: 400; /* Более строгий шрифт */
+    font-family: 'Roboto', sans-serif; /* Строгий шрифт */
+}
+
+.version-info p {
+    margin: 5px 0; /* Меньше отступов между строками */
+}
+
+.version-info p:first-child {
+    font-size: 14px; /* Для первой строки чуть больше шрифт */
+}
+
+.version-info p:last-child {
+    font-size: 14px; /* Для авторских прав немного меньший шрифт */
+    font-style: italic; /* Курсив для авторских прав */
+}
+
+.admin-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.service-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.service-buttons button {
+    background-color: #4CAF50; /* Зеленый цвет кнопки */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 220px; /* Фиксированная ширина кнопок */
+    text-align: center;
+}
+
+.service-buttons button:hover {
+    background-color: #45a049;
+}
+
+.service-buttons p {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    width: 220px;
+    margin-top: 5px;
+}
+
+.service-buttons button:focus {
+    outline: none; /* Убираем обводку при фокусе */
+}
+
+.admin-content h2 {
+    font-size: 26px;
+    color: #2e2e2e;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+/* Оформление блока с сервисами */
+.admin-content {
+    padding: 20px;
+    background-color: #f9f9fb; /* Светлый фон */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    font-family: 'Arial', sans-serif; /* Общий шрифт */
+}
+
+/* Контейнер для сервисов */
+.service-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 15px; /* Уменьшено расстояние между карточками */
+    max-width: 1100px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрируем контейнер */
+}
+
+/* Элементы сервиса */
+.service-item {
+    background-color: #ffffff;
+    border-radius: 8px; /* Уменьшены углы */
+    padding: 15px; /* Меньше отступов */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавные анимации */
+}
+
+/* Стиль для кнопки */
+.service-item button {
+    background-color: #1e75ff; /* Более насыщенный синий */
+    color: #fff;
+    border: none;
+    padding: 10px 18px; /* Уменьшены отступы */
+    font-size: 14px; /* Меньший размер шрифта */
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px; /* Отступ от кнопки */
+}
+
+.service-item button:hover {
+    background-color: #155db1; /* Более темный синий при наведении */
+}
+
+/* Стиль для описания */
+.service-item p {
+    color: #555;
+    font-size: 13px; /* Уменьшен размер текста */
+    line-height: 1.4;
+    font-weight: 500;
+    margin-top: 8px; /* Меньший отступ */
+    text-align: center;
+    opacity: 0.8; /* Немного прозрачный текст */
+}
+
+/* Картинки */
+.service-icon {
+    width: 70px; /* Уменьшен размер картинок */
+    height: auto;
+    margin-bottom: 10px; /* Меньший отступ */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Эффект наведения на карточки */
+.service-item:hover {
+    transform: translateY(-8px); /* Большее поднятие карточки */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Более выраженная тень */
+}
+
+/* Для мобильных устройств */
+@media (max-width: 1024px) {
+    .service-buttons {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки для планшетов */
+    }
+}
+
+@media (max-width: 768px) {
+    .service-buttons {
+        grid-template-columns: 1fr; /* 1 колонка для мобильных устройств */
+    }
+}
+
+/* Контейнер для администрирования */
+.admin-container1 {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Кнопка добавления пользователя */
+.add-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 14px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 25px rgba(0, 123, 255, 0.2);
+}
+
+/* Таблица пользователей */
+.user-table {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.data-table th, .data-table td {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.data-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.data-table tr:hover {
+    background-color: #e9f4fe;
+}
+
+/* Кнопки действий */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-buttons .btn {
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-edit {
+    background-color: #f39c12;
+}
+
+.btn-edit:hover {
+    background-color: #e67e22;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* Аватар пользователя */
+.avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.avatar-img:hover {
+    transform: scale(1.1);
+}
+
+/* Кнопка возврата на главную */
+.back-to-profile {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.back-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Кнопка Справка */
+.help-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #28a745; /* Зеленый, чтобы выделяться */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Плавные переходы */
+    box-shadow: 0 4px 12px rgba(0, 128, 0, 0.1);
+}
+
+.help-btn:hover {
+    background-color: #218838; /* Темнее на hover */
+    transform: translateY(-2px); /* Легкое поднятие кнопки */
+    box-shadow: 0 6px 18px rgba(0, 128, 0, 0.2);
+}
+
+.help-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.5); /* Подсветка при фокусе */
+}
+/* Стиль для модального окна */
+.modal {
+    display: none; /* Изначально скрыто */
+    position: fixed; /* Окно фиксируется поверх контента */
+    z-index: 1000; /* Чтобы модальное окно было поверх всего */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+/* Контейнер контента модального окна */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 600px;
+	height: 550px;
+    max-width: 90%; /* Ограничение ширины на мобильных устройствах */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Кнопка для закрытия модального окна */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    background: none;
+    border: none;
+}
+
+.close-btn:hover {
+    color: #f00; /* Красный цвет при наведении */
+}
+
+/* Заголовок модального окна */
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Текст справки в модальном окне */
+.modal-content p {
+    font-size: 1rem;
+    color: #666;
+}

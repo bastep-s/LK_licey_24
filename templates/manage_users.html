@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление пользователями</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="admin-container1">
+
+    <div class="page-header">
+        <h1>Управление пользователями</h1>
+        <p class="description">Просматривайте, редактируйте и удаляйте пользователей системы. Также можно добавлять новых пользователей через кнопку ниже.</p>
+        <button class="help-btn" id="help-btn" aria-label="Справка">Справка</button>
+    </div>
+
+    <!-- Кнопка добавления пользователя -->
+    <div class="actions">
+	<br />
+        <a href="{{ url_for('add_user') }}" class="add-btn">Добавить пользователя</a>
+    </div>
+
+    <!-- Таблица пользователей -->
+    <div class="user-table">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Имя пользователя</th>
+                    <th>Полное имя</th>
+                    <th>Роль</th>
+                    <th>Группа</th>
+                    <th>Учитель</th>
+                    <th>Аватар</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user['username'] }}</td>
+                        <td>{{ user['full_name'] }}</td>
+                        <td>{{ user['role'] }}</td>
+                        <td>{{ user['class'] }}</td>
+                        <td>{{ user['class_teacher'] }}</td>
+                        <td>
+                            <img src="{{ url_for('static', filename=user['avatar'] if user['avatar'] else 'images/default_avatar.png') }}" alt="Avatar" class="avatar-img">
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="{{ url_for('edit_user', user_id=user['id']) }}" class="btn btn-edit">Редактировать</a>
+                                <form action="{{ url_for('delete_user', user_id=user['id']) }}" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-delete">Удалить</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Кнопка возврата на главную -->
+        <div class="back-to-profile">
+            <a href="{{ url_for('admin_panel') }}" class="back-btn">Возврат на главную (Профиль)</a>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно -->
+<div id="help-modal" class="modal">
+    <div class="modal-content">
+        <button id="close-btn" class="close-btn">&times;</button>
+        <h2>Справка</h2>
+        <p>Этот модуль управления пользователями позволяет администратору управлять учетными записями пользователей системы. Вы можете выполнять следующие действия:</p>
+
+        <ul>
+            <li><strong>Просмотр пользователей:</strong> В этом разделе можно просматривать информацию о всех зарегистрированных пользователях системы, включая их имена, роли и группы.</li>
+            <li><strong>Редактирование пользователей:</strong> Вы можете изменять информацию о пользователе, такую как имя, роль, группу и аватар. Это полезно для обновления данных, если они изменяются.</li>
+            <li><strong>Удаление пользователей:</strong> Если пользователь больше не нужен в системе, вы можете удалить его учетную запись. Внимание: это действие необратимо!</li>
+            <li><strong>Добавление новых пользователей:</strong> Через соответствующую кнопку можно создать нового пользователя, заполнив необходимые поля. Это включает в себя задачу имени, пароля, роли и других параметров.</li>
+            <li><strong>Управление ролями:</strong> Каждому пользователю можно назначить роль (например, администратор, модератор, пользователь), что определяет его доступ к различным функциям системы.</li>
+            <li><strong>Поиск пользователей:</strong> Встроенная функция поиска позволяет быстро находить пользователей по имени или другим данным.</li>
+        </ul>
+
+        <p>Для более подробной информации и инструкций по работе с системой обратитесь к документации или свяжитесь с администратором системы.</p>
+    </div>
+</div>
+
+
+<script>
+    // Открытие и закрытие модального окна
+    const helpBtn = document.getElementById('help-btn');
+    const modal = document.getElementById('help-modal');
+    const closeBtn = document.getElementById('close-btn');
+
+    // Изначально скрываем модальное окно
+    modal.style.display = 'none';
+
+    helpBtn.addEventListener('click', () => {
+        modal.style.display = 'flex'; // Показываем модальное окно
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none'; // Закрываем модальное окно
+    });
+
+    // Закрытие модального окна при клике за его пределами
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

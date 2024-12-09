@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Лицей при УлГТУ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <div class="admin-container">
+
+		<!-- Панель навигации -->
+		<nav class="admin-nav">
+
+			<h1>Личный кабинет</h1>
+
+			<!-- Выводим информацию о пользователе -->
+			<div class="user-info">
+				{% if current_user %}
+					<div class="avatar">
+						<img src="{{ url_for('static', filename=current_user['avatar'] if current_user['avatar'] else 'images/default_avatar.png') }}" alt="Avatar" class="avatar-img">
+					</div>
+					<div class="user-details">
+						<p>{{ current_user['full_name'] }}</p>
+						<p class="role">{{ current_user['role'] }}</p>
+					</div>
+				{% else %}
+					<p>Не авторизован</p>
+				{% endif %}
+			</div>
+
+			<!-- Состояние сессии -->
+			<div class="session-status">
+				<div class="session-status">
+				<p>Статус сессии: {{ session_status }}</p>
+				<p id="session-duration">Продолжительность: {{ session_duration }}</p>
+			</div>
+			</div>
+
+			<!-- Навигационное меню -->
+			<ul class="menu">
+				<li><a href="{{ url_for('manage_users') }}" class="btn">Управление пользователями</a></li>
+				<li><a href="/admin/schedule" class="menu-item">Управление расписанием</a></li>
+				<li><a href="/admin/statistics" class="menu-item">Статистика и мониторинг</a></li>
+				<li><a href="/admin/settings" class="menu-item">Настройки системы</a></li>
+				<li><a href="/admin/roles" class="menu-item">Управление ролями</a></li>
+				<li><a href="/logout" class="menu-item logout">Выход</a></li>
+			</ul>
+			
+			<!-- Версия личного кабинета -->
+			<div class="version-info">
+				<p>Личный кабинет, версия 1.0 (бета).</p>
+				<p>Все права защищены.</p>
+			</div>
+		</nav>
+
+
+		<!-- Контент -->
+		<div class="admin-content">
+			<h2>Доступ к сервисам</h2>
+
+			<div class="service-buttons">
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image1.png') }}" alt="ВКС" class="service-icon">
+				<button onclick="window.location.href='{{ url_for('conference', user_id=id_user) }}'">ВКС</button>
+				<p>Сервис видеоконференций УлГТУ.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image2.png') }}" alt="Единое окно" class="service-icon">
+				<button onclick="window.location.href='https://sw.ulstu.ru/client-entry-point'">Единое окно</button>
+				<p>Веб-сервис Единое окно УлГТУ.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image3.png') }}" alt="Доп. образование" class="service-icon">
+				<button onclick="window.location.href='https://dpo.ulstu.ru'">Доп. образование</button>
+				<p>Обучающая среда дополнительного образования (ДПО) ИННО УлГТУ.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image4.png') }}" alt="Навигатор" class="service-icon">
+				<button onclick="window.location.href='https://map.ulstu.ru'">Навигатор</button>
+				<p>Сервис предоставления общей карты территории УлГТУ, а также плана каждого корпуса.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image5.png') }}" alt="Научная деятельность" class="service-icon">
+				<button onclick="window.location.href='https://files.ulstu.ru/s/oENZeYX8edmcwpE'">Научная деятельность</button>
+				<p>Внутренние документы научной деятельности УлГТУ.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image6.png') }}" alt="Обучение" class="service-icon">
+				<button onclick="window.location.href='https://lms.ulstu.ru'">Обучение</button>
+				<p>Виртуальная обучающая среда (LMS), среда для онлайн-обучения.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image7.png') }}" alt="Расписание занятий" class="service-icon">
+				<button onclick="window.location.href='https://time.ulstu.ru'">Расписание занятий</button>
+				<p>Сервис расписания занятий студентов и преподавателей УлГТУ.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image8.png') }}" alt="Файлы" class="service-icon">
+				<button onclick="window.location.href='https://files.ulstu.ru'">Файлы</button>
+				<p>Облачное хранилище файлов студентов и сотрудников УлГТУ.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image9.png') }}" alt="График отпусков" class="service-icon">
+				<button onclick="window.location.href='https://jit.ulstu.ru'">График отпусков</button>
+				<p>Сервис предоставления информации о персональном графике отпусков.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image10.png') }}" alt="Договоры" class="service-icon">
+				<button onclick="window.location.href='https://sw.ulstu.ru/client-entry-point'">Договоры</button>
+				<p>Сервис предоставления информации о заключенных договорах на образовательные услуги.</p>
+			</div>
+
+			<div class="service-item">
+				<img src="{{ url_for('static', filename='images/icon/image11.png') }}" alt="Расчетный лист" class="service-icon">
+				<button onclick="window.location.href='https://time.ulstu.ru'">Расчетный лист</button>
+				<p>Сервис получения зарплатных расчетных листков для сотрудников.</p>
+			</div>
+		</div>
+
+		</div>
+
+
+
+
+    </div>
+
+<script>
+    function updateSessionDuration() {
+        fetch('/session_duration')  // Запросим сервер для получения продолжительности сессии
+            .then(response => response.text())
+            .then(duration => {
+                // Обновляем элемент на странице, показывающий продолжительность сессии
+                document.getElementById('session-duration').textContent = 'Продолжительность: ' + duration;
+            })
+            .catch(error => console.error('Ошибка при получении продолжительности сессии:', error));
+    }
+
+    // Обновляем продолжительность сессии каждую секунду
+    setInterval(updateSessionDuration, 1000);
+
+    // Начальная загрузка продолжительности сессии
+    updateSessionDuration();
+</script>
+
+</body>
+</html>

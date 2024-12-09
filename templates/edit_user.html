@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование пользователя</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* Стиль страницы редактирования пользователя */
+        .edit-form-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .page-header .description {
+            text-align: center;
+            color: #777;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .form-group input[type="file"] {
+            padding: 5px;
+            background-color: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            color: #fff;
+        }
+
+        .btn-save {
+            background-color: #4CAF50;
+            border: none;
+        }
+
+        .btn-save:hover {
+            background-color: #45a049;
+        }
+
+        .btn-cancel {
+            background-color: #f44336;
+        }
+
+        .btn-cancel:hover {
+            background-color: #e53935;
+        }
+
+        @media (max-width: 768px) {
+            .edit-form-container {
+                padding: 20px;
+            }
+        }
+
+        /* Стиль для уведомлений */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            display: none;
+            z-index: 1000;
+        }
+
+        .notification.success {
+            background-color: #4CAF50; /* Зеленый для успеха */
+        }
+
+        .notification.error {
+            background-color: #f44336; /* Красный для ошибки */
+        }
+    </style>
+</head>
+<body>
+
+<div class="edit-form-container">
+    <div class="page-header">
+        <h1>Редактирование пользователя</h1>
+        <p class="description">Отредактируйте данные пользователя ниже.</p>
+    </div>
+
+    <!-- Уведомления об успехе или ошибке -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="notification {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('edit_user', user_id=user['id']) }}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" name="username" value="{{ user['username'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" name="password" value="{{ user['password'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="full_name">Полное имя:</label>
+            <input type="text" name="full_name" value="{{ user['full_name'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Роль:</label>
+            <select name="role" required>
+                <option value="admin" {% if user['role'] == 'admin' %}selected{% endif %}>Admin</option>
+                <option value="student" {% if user['role'] == 'student' %}selected{% endif %}>Student</option>
+                <option value="teacher" {% if user['role'] == 'teacher' %}selected{% endif %}>Teacher</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="group">Группа:</label>
+            <input type="text" name="group" value="{{ user['group'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="teacher_name">Учитель:</label>
+            <select name="teacher_name" required>
+                <option value="">Выберите учителя</option>
+                {% for admin in admins %}
+                    <option value="{{ admin['full_name'] }}" {% if user['teacher_name'] == admin['full_name'] %}selected{% endif %}>{{ admin['full_name'] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="avatar">Аватар:</label>
+            <input type="text" name="avatar" value="{{ user['avatar'] }}">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-save">Сохранить изменения</button>
+            <a href="{{ url_for('manage_users') }}" class="btn btn-cancel">Отмена</a>
+        </div>
+    </form>
+
+</div>
+
+<script>
+    // Показываем уведомление, если оно есть
+    const notifications = document.querySelectorAll('.notification');
+    notifications.forEach(notification => {
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 1000); // Убираем уведомление через 3 секунды
+    });
+</script>
+
+</body>
+</html>

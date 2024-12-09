@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в Лицей при УлГТУ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <div class="login-container">
+        <!-- Логотип Лицея -->
+        <body class="auth-page">
+    <!-- Весь контент страницы авторизации -->
+		<div class="logo-container">
+			<img src="static/images/logo.png" alt="Логотип">
+		</div>
+		<!-- Другой контент -->
+	</body>
+
+        
+        <h2>Вход в Лицей</h2>
+        
+        <!-- Форма входа -->
+        <form action="/login" method="post">
+            <input type="text" class="input-field" placeholder="Логин" name="username" required>
+            <input type="password" class="input-field" placeholder="Пароль" name="password" required>
+            <button type="submit" class="login-button">Войти</button>
+        </form>
+        
+        <!-- Подсказка для регистрации (если нужно) -->
+        <p class="signup-prompt">
+            Нет аккаунта? <a href="/register">Зарегистрироваться</a>
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видеоконференция с {{ user_name }}</title>
+    
+    <!-- Подключение шрифтов и стилей -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #003366; /* Синий фон */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+
+        #jitsi-meet {
+            width: 100%;
+            height: 80vh;
+            max-width: 1200px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .navbar {
+            background-color: #00274d; /* Темно-синий */
+            width: 100%;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            font-size: 18px;
+            z-index: 1000;
+        }
+
+        .navbar h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .navbar .user-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .navbar .user-info i {
+            font-size: 20px;
+        }
+
+        .footer {
+            background-color: #00274d; /* Темно-синий */
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer a {
+            color: #1e90ff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Навигационная панель -->
+    <div class="navbar">
+        <h2>Конференция с {{ user_name }}</h2>
+        <div class="user-info">
+            <i class="fas fa-user-circle"></i> {{ user_name }}
+        </div>
+    </div>
+
+<div>
+    <p>Отладка: {{ user_name }}</p>
+</div>
+
+    <!-- Контейнер для Jitsi -->
+    <div id="jitsi-meet"></div>
+
+    <!-- Подключение Jitsi API для видеоконференции -->
+    <script src="https://meet.jit.si/external_api.js"></script>
+    <script type="text/javascript">
+        const domain = 'meet.jit.si';
+        const options = {
+            roomName: '{{ room_name }}',
+            width: '100%',
+            height: '100%',
+            parentNode: document.querySelector('#jitsi-meet'),
+            configOverwrite: { startWithAudioMuted: true },
+            interfaceConfigOverwrite: { filmStripOnly: false }
+        };
+        const api = new JitsiMeetExternalAPI(domain, options);
+    </script>
+
+    <!-- Нижний колонтитул -->
+    <div class="footer">
+        <p>&copy; 2024 Лицей при УлГТУ</p>
+        <p>
+            <a href="#">Политика конфиденциальности</a> | 
+            <a href="#">Условия использования</a> | 
+            <a href="#">Контакты</a>
+        </p>
+    </div>
+
+</body>
+</html>
